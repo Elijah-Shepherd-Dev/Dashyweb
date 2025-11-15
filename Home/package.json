@@ -1,0 +1,19 @@
+{
+  "name": "dashyweb",
+  "version": "1.0.0",
+  "description": "Your personalized internet command center",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'No build process needed'"
+  },
+  "dependencies": {
+    "ogl": "^0.0.87"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "keywords": ["dashboard", "productivity", "tools", "internet"],
+  "author": "Dashyweb Team",
+  "license": "MIT"
+}
