@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashyweb - Your Personalized Internet Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Aurora.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Aurora Background -->
+    <div id="aurora-background"></div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="https://ik.imagekit.io/tycncf0zq0/49bece20-7c7f-4d8f-82b1-a523bb3e21f4.png?updatedAt=1763190928211" alt="Dashyweb Logo">
+                    <span>Dashyweb</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#languages">Languages</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li class="language-selector">
+                        <a href="#"><i class="fas fa-globe"></i> English</a>
+                        <div class="language-dropdown">
+                            <div class="language-option">
+                                <div class="language-flag">
+                                    <img src="https://flagcdn.com/w40/us.png" alt="English">
+                                </div>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option">
+                                <div class="language-flag">
+                                    <img src="https://flagcdn.com/w40/es.png" alt="Spanish">
+                                </div>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option">
+                                <div class="language-flag">
+                                    <img src="https://flagcdn.com/w40/fr.png" alt="French">
+                                </div>
+                                <span>Français</span>
+                            </div>
+                            <div class="language-option">
+                                <div class="language-flag">
+                                    <img src="https://flagcdn.com/w40/de.png" alt="German">
+                                </div>
+                                <span>Deutsch</span>
+                            </div>
+                            <div class="language-option">
+                                <div class="language-flag">
+                                    <img src="https://flagcdn.com/w40/jp.png" alt="Japanese">
+                                </div>
+                                <span>日本語</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#" class="btn btn-primary">Get Started</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Your Personalized Internet Command Center</h1>
+                <p class="hero-subtitle">Discover, organize, and access the best of the web from one clean, customizable dashboard. Available in multiple languages.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">Start Exploring</a>
+                    <a href="#" class="btn btn-secondary">Watch Demo</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="dashboard-preview">
+                    <div class="preview-header">
+                        <div class="preview-nav">
+                            <span class="preview-dot"></span>
+                            <span class="preview-dot"></span>
+                            <span class="preview-dot"></span>
+                        </div>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-widget widget-1">
+                            <div class="widget-header">AI Tools</div>
+                            <div class="widget-item"><i class="fas fa-robot"></i> ChatGPT</div>
+                            <div class="widget-item"><i class="fas fa-palette"></i> Midjourney</div>
+                            <div class="widget-item"><i class="fas fa-image"></i> DALL-E</div>
+                        </div>
+                        <div class="preview-widget widget-2">
+                            <div class="widget-header">Entertainment</div>
+                            <div class="widget-item"><i class="fab fa-spotify"></i> Spotify</div>
+                            <div class="widget-item"><i class="fab fa-youtube"></i> YouTube</div>
+                            <div class="widget-item"><i class="fas fa-film"></i> Netflix</div>
+                        </div>
+                        <div class="preview-widget widget-3">
+                            <div class="widget-header">Productivity</div>
+                            <div class="widget-item"><i class="fas fa-sticky-note"></i> Notion</div>
+                            <div class="widget-item"><i class="fas fa-tasks"></i> Trello</div>
+                            <div class="widget-item"><i class="fab fa-google-drive"></i> Google Drive</div>
+                        </div>
+                        <div class="preview-widget widget-4">
+                            <div class="widget-header">Education</div>
+                            <div class="widget-item"><i class="fas fa-graduation-cap"></i> Coursera</div>
+                            <div class="widget-item"><i class="fas fa-book"></i> Khan Academy</div>
+                            <div class="widget-item"><i class="fas fa-language"></i> Duolingo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">The Problem Dashyweb Solves</h2>
+            <p class="section-subtitle">The internet is vast and overwhelming. You might:</p>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Waste Time Searching</h3>
+                    <p>Spend 15 minutes looking for that specific tool or website you used last week.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Forget Useful Resources</h3>
+                    <p>Can't remember the name of that cool AI image generator or helpful study site.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h3>Have Cluttered Bookmarks</h3>
+                    <p>Your favorite sites are scattered across different browsers and devices.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Miss Discovery Opportunities</h3>
+                    <p>Struggle to find new, interesting ways to learn, create, or be entertained.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <p class="section-subtitle">Everything you need in one powerful dashboard</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <h3>Customizable Dashboard</h3>
+                    <p>Add, remove, and rearrange widgets to create your perfect dashboard layout.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Smart Search & Filter</h3>
+                    <p>Find exactly what you need with powerful search and filtering by category, tags, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Favorites & Pinning</h3>
+                    <p>Create your own mini-dashboard of most-used sites for one-click access.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3>Cross-Device Sync</h3>
+                    <p>Access your personalized dashboard from any device, anywhere.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Curated Content</h3>
+                    <p>Every resource is hand-picked and vetted for quality and relevance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Smart Notifications</h3>
+                    <p>Get alerts about new tools, updates, and trending resources in your interests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section" id="categories">
+        <div class="container">
+            <h2 class="section-title">Explore by Category</h2>
+            <p class="section-subtitle">Organized hubs for every aspect of your digital life</p>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Fun & Entertainment</h3>
+                    <p>Games, streaming, interactive experiences, and everything for pure enjoyment.</p>
+                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI & Smart Tools</h3>
+                    <p>Cutting-edge AI chatbots, generators, assistants, and productivity boosters.</p>
+                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Design & Creativity</h3>
+                    <p>Tools and inspiration for creators, artists, and visual designers.</p>
+                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education & Study</h3>
+                    <p>Learning platforms, research tools, and academic resources for all levels.</p>
+                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Productivity & Utilities</h3>
+                    <p>Apps and tools to help you work smarter and manage your digital life.</p>
+                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Hidden Gems</h3>
+                    <p>Unique, niche, and surprising websites that don't fit standard categories.</p>
+                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language Support Section -->
+    <section class="language-support" id="languages">
+        <div class="container">
+            <h2 class="section-title">Global Accessibility</h2>
+            <p class="section-subtitle">Dashyweb supports multiple languages to serve users worldwide</p>
+            <div class="language-grid">
+                <div class="language-item">
+                    <div class="language-icon">🌐</div>
+                    <h3>English</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-icon">🇪🇸</div>
+                    <h3>Spanish</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-icon">🇫🇷</div>
+                    <h3>French</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-icon">🇩🇪</div>
+                    <h3>German</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-icon">🇯🇵</div>
+                    <h3>Japanese</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-icon">🇨🇳</div>
+                    <h3>Chinese</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-icon">🇷🇺</div>
+                    <h3>Russian</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-icon">🇵🇹</div>
+                    <h3>Portuguese</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience Section -->
+    <section class="audience-section">
+        <div class="container">
+            <h2 class="section-title">Who is Dashyweb For?</h2>
+            <div class="audience-cards">
+                <div class="audience-card">
+                    <div class="audience-image">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Students</h3>
+                    <p>Find study tools, research materials, and creative outlets all in one place.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-image">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Professionals</h3>
+                    <p>Access efficient tools for design, writing, and productivity without the clutter.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-image">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Curious Minds</h3>
+                    <p>Discover amazing websites and resources you never knew existed.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-image">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Parents & Educators</h3>
+                    <p>Find safe, educational, and entertaining resources for children.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to organize your digital life?</h2>
+                <p>Join thousands of users who have transformed how they discover and use the web.</p>
+                <a href="#" class="btn btn-primary">Get Started Free</a>
+                <p class="cta-note">No credit card required. Setup takes less than 2 minutes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <img src="https://ik.imagekit.io/tycncf0zq0/49bece20-7c7f-4d8f-82b1-a523bb3e21f4.png?updatedAt=1763190928211" alt="Dashyweb Logo">
+                        <span>Dashyweb</span>
+                    </div>
+                    <p>Your personalized internet command center for discovery, productivity, and entertainment.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Dashyweb. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
