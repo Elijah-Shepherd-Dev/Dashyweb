@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashyweb - Web Development for Anything</title>
+    <title>Dashyweb - Web Development for 𝓐𝓷𝔂𝓽𝓱𝓲𝓷𝓰</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* CSS Variables for consistent theming */
         :root {
@@ -30,6 +31,12 @@
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
         h1, h2, h3, h4 {
@@ -85,6 +92,7 @@
         .btn-primary:hover {
             background-color: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
         }
 
         .btn-secondary {
@@ -95,6 +103,7 @@
         .btn-secondary:hover {
             background-color: #ea580c;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4);
         }
 
         .text-center {
@@ -109,6 +118,12 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            transform: translateY(-100%);
+            animation: slideDown 0.8s ease forwards 0.5s;
+        }
+
+        @keyframes slideDown {
+            to { transform: translateY(0); }
         }
 
         .navbar {
@@ -132,6 +147,7 @@
 
         .nav-links li {
             margin-left: 2rem;
+            position: relative;
         }
 
         .nav-links a {
@@ -139,6 +155,21 @@
             color: var(--dark);
             font-weight: 500;
             transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
@@ -159,12 +190,37 @@
             color: white;
             padding: 10rem 0 5rem;
             margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 0.8s;
+        }
+
+        @keyframes fadeUp {
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
@@ -184,6 +240,23 @@
             justify-content: center;
         }
 
+        .anything {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 3.2rem;
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
         /* Services Section */
         .services {
             background-color: white;
@@ -192,6 +265,9 @@
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards;
         }
 
         .section-header p {
@@ -211,22 +287,163 @@
             border-radius: var(--radius);
             padding: 2rem;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.animate {
+            animation: fadeUp 0.6s ease forwards;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         .service-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--primary);
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: #f1f5f9;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .pricing-card.animate {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-bottom-left-radius: var(--radius);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-period {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .addons {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .addons.animate {
+            animation: fadeUp 0.6s ease forwards 0.3s;
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .addon-card {
+            background-color: #f8fafc;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .addon-card:hover {
+            transform: translateX(5px);
+            background-color: #f1f5f9;
+        }
+
+        .addon-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .addon-name i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .addon-price {
+            font-weight: 700;
+            color: var(--primary);
         }
 
         /* Comparison Section */
         .comparison {
-            background-color: #f1f5f9;
+            background-color: white;
         }
 
         .comparison-table {
@@ -236,6 +453,12 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .comparison-table.animate {
+            animation: fadeUp 0.6s ease forwards;
         }
 
         .comparison-table th, .comparison-table td {
@@ -263,6 +486,27 @@
             background: linear-gradient(135deg, var(--secondary) 0%, #fb923c 100%);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,0 1000,1000 0,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards;
         }
 
         .cta h2 {
@@ -349,6 +593,10 @@
                 font-size: 2.25rem;
             }
             
+            .anything {
+                font-size: 2.5rem;
+            }
+            
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -383,6 +631,10 @@
                 display: block;
                 overflow-x: auto;
             }
+            
+            .addon-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -395,6 +647,7 @@
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#comparison">Comparison</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -407,11 +660,11 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Web Development for ANYTHING</h1>
+                <h1>Web Development for <span class="anything">𝓐𝓷𝔂𝓽𝓱𝓲𝓷𝓰</span></h1>
                 <p>From simple business websites to complex roleplay systems, we build it all with expertise and passion.</p>
                 <div class="hero-buttons">
                     <a href="#services" class="btn btn-primary">Our Services</a>
-                    <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+                    <a href="#pricing" class="btn btn-secondary">View Pricing</a>
                 </div>
             </div>
         </div>
@@ -426,28 +679,144 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🌐</div>
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
                     <h3>General Web Development</h3>
                     <p>We build websites for any business, idea, or individual, no matter the industry or purpose.</p>
                     <ul>
-                        <li>Front-End & Back-End Development</li>
-                        <li>E-commerce Solutions</li>
-                        <li>Blogs & Portfolios</li>
-                        <li>Business Brochure Sites</li>
-                        <li>Custom Web Applications</li>
+                        <li><i class="fas fa-check"></i> Front-End & Back-End Development</li>
+                        <li><i class="fas fa-check"></i> E-commerce Solutions</li>
+                        <li><i class="fas fa-check"></i> Blogs & Portfolios</li>
+                        <li><i class="fas fa-check"></i> Business Brochure Sites</li>
+                        <li><i class="fas fa-check"></i> Custom Web Applications</li>
                     </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🎭</div>
+                    <div class="service-icon"><i class="fas fa-theater-masks"></i></div>
                     <h3>Roleplay Systems</h3>
                     <p>Specialized in creating complex online platforms tailored for roleplaying communities.</p>
                     <ul>
-                        <li>Complex User Profiles</li>
-                        <li>Post Formatting & IC/OOC Separation</li>
-                        <li>Thread & Forum Management</li>
-                        <li>Character & World Databases</li>
-                        <li>Integrated Chat Systems</li>
+                        <li><i class="fas fa-check"></i> Complex User Profiles</li>
+                        <li><i class="fas fa-check"></i> Post Formatting & IC/OOC Separation</li>
+                        <li><i class="fas fa-check"></i> Thread & Forum Management</li>
+                        <li><i class="fas fa-check"></i> Character & World Databases</li>
+                        <li><i class="fas fa-check"></i> Integrated Chat Systems</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that works best for you and add any additional features you need.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="price">$20</div>
+                        <div class="price-period">One-time website development fee</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Custom Website Design</li>
+                        <li><i class="fas fa-check"></i> Responsive Layout</li>
+                        <li><i class="fas fa-check"></i> Basic SEO Optimization</li>
+                        <li><i class="fas fa-times"></i> Website Hosting & Security</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="price">$25<span style="font-size: 1rem;">/month</span></div>
+                        <div class="price-period">or $2/year per site</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Everything in Basic</li>
+                        <li><i class="fas fa-check"></i> Premium Website Hosting</li>
+                        <li><i class="fas fa-check"></i> Advanced Security Features</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> Regular Updates & Maintenance</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; text-align: center;">Get Premium</a>
+                </div>
+            </div>
+            
+            <div class="addons">
+                <h3 class="text-center">Addon Services</h3>
+                <p class="text-center">Enhance your website with our powerful addons</p>
+                
+                <div class="addon-grid">
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-envelope"></i> Dashing Custom with Google and Mail</div>
+                        <div class="addon-desc">Custom email @your-company.com and full Google Registration/Workspace</div>
+                        <div class="addon-price">$90/year</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-shield-alt"></i> Dashing Security</div>
+                        <div class="addon-desc">Our full security service with staff monitoring</div>
+                        <div class="addon-price">$10 one-time</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-shield-virus"></i> Dashing Security+</div>
+                        <div class="addon-desc">Custom security team for high protection</div>
+                        <div class="addon-price">$15 one-time</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-robot"></i> Dashy AI Chatting</div>
+                        <div class="addon-desc">Dashy AI Model 2.5 Lite (Google Gemini 2.5 Flash-lite)</div>
+                        <div class="addon-price">$13/month</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-robot"></i> Dashy AI Chatting+</div>
+                        <div class="addon-desc">Dashy AI Model 3.5 Pro (Google Gemini 2.5 Pro)</div>
+                        <div class="addon-price">$20/month</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-robot"></i> Dashy AI Chatting Pro+</div>
+                        <div class="addon-desc">Our highest model AI for any use</div>
+                        <div class="addon-price">$35/month</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-palette"></i> Dashy AI Image-Rig</div>
+                        <div class="addon-desc">Fully working AI for image generation</div>
+                        <div class="addon-price">$7/month</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-palette"></i> Dashy AI Image-Rig+</div>
+                        <div class="addon-desc">Standard image generation with 2nd model</div>
+                        <div class="addon-price">$10/month</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-palette"></i> Dashy AI Image-Rig Pro+</div>
+                        <div class="addon-desc">Ultra 3rd model with high quality images</div>
+                        <div class="addon-price">$15/month</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-video"></i> AI Video-Dash</div>
+                        <div class="addon-desc">Advanced video generation for anything</div>
+                        <div class="addon-price">$290/month</div>
+                    </div>
+                    
+                    <div class="addon-card">
+                        <div class="addon-name"><i class="fas fa-server"></i> Dashy Hosters</div>
+                        <div class="addon-desc">Website hosting and security (essential)</div>
+                        <div class="addon-price">$16/month</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -497,9 +866,11 @@
     <!-- CTA Section -->
     <section class="cta" id="contact">
         <div class="container">
-            <h2>Ready to Build Your Website?</h2>
-            <p>Whether you need a standard business site or a complex roleplay platform, we have the expertise to bring your vision to life.</p>
-            <a href="#contact" class="btn btn-primary">Get Started Today</a>
+            <div class="cta-content">
+                <h2>Ready to Build Your Website?</h2>
+                <p>Whether you need a standard business site or a complex roleplay platform, we have the expertise to bring your vision to life.</p>
+                <a href="#contact" class="btn btn-primary">Get Started Today</a>
+            </div>
         </div>
     </section>
 
@@ -570,6 +941,25 @@
                 }
             });
         });
+
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.service-card, .pricing-card, .comparison-table, .addons');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate');
+                }
+            });
+        };
+
+        // Initial check on page load
+        window.addEventListener('load', animateOnScroll);
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
     </script>
 </body>
 </html>
