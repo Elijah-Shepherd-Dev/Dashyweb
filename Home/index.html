@@ -3,413 +3,573 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashyweb - Your Personalized Internet Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Dashyweb - Web Development for Anything</title>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #f97316;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+            color: white;
+            padding: 10rem 0 5rem;
+            margin-top: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Comparison Section */
+        .comparison {
+            background-color: #f1f5f9;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--secondary) 0%, #fb923c 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--shadow);
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                padding: 0.75rem 1.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
+    <!-- Header & Navigation -->
+    <header>
         <div class="container">
             <nav class="navbar">
-                <div class="logo">
-                    <img src="https://ik.imagekit.io/tycncf0zq0/49bece20-7c7f-4d8f-82b1-a523bb3e21f4.png?updatedAt=1763190928211" alt="Dashyweb Logo">
-                    <span>Dashyweb</span>
-                </div>
+                <a href="#" class="logo">Dashyweb</a>
                 <ul class="nav-links">
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#categories">Categories</a></li>
-                    <li><a href="#languages">Languages</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li class="language-selector">
-                        <a href="#"><i class="fas fa-globe"></i> English</a>
-                        <div class="language-dropdown">
-                            <div class="language-option">
-                                <div class="language-flag">
-                                    <img src="https://flagcdn.com/w40/us.png" alt="English">
-                                </div>
-                                <span>English</span>
-                            </div>
-                            <div class="language-option">
-                                <div class="language-flag">
-                                    <img src="https://flagcdn.com/w40/es.png" alt="Spanish">
-                                </div>
-                                <span>Español</span>
-                            </div>
-                            <div class="language-option">
-                                <div class="language-flag">
-                                    <img src="https://flagcdn.com/w40/fr.png" alt="French">
-                                </div>
-                                <span>Français</span>
-                            </div>
-                            <div class="language-option">
-                                <div class="language-flag">
-                                    <img src="https://flagcdn.com/w40/de.png" alt="German">
-                                </div>
-                                <span>Deutsch</span>
-                            </div>
-                            <div class="language-option">
-                                <div class="language-flag">
-                                    <img src="https://flagcdn.com/w40/jp.png" alt="Japanese">
-                                </div>
-                                <span>日本語</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="#" class="btn btn-primary">Get Started</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#comparison">Comparison</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button class="mobile-menu-btn">☰</button>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Your Personalized Internet Command Center</h1>
-                <p class="hero-subtitle">Discover, organize, and access the best of the web from one clean, customizable dashboard. Available in multiple languages.</p>
+                <h1>Web Development for ANYTHING</h1>
+                <p>From simple business websites to complex roleplay systems, we build it all with expertise and passion.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">Start Exploring</a>
-                    <a href="#" class="btn btn-secondary">Watch Demo</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="dashboard-preview">
-                    <div class="preview-header">
-                        <div class="preview-nav">
-                            <span class="preview-dot"></span>
-                            <span class="preview-dot"></span>
-                            <span class="preview-dot"></span>
-                        </div>
-                    </div>
-                    <div class="preview-content">
-                        <div class="preview-widget widget-1">
-                            <div class="widget-header">AI Tools</div>
-                            <div class="widget-item"><i class="fas fa-robot"></i> ChatGPT</div>
-                            <div class="widget-item"><i class="fas fa-palette"></i> Midjourney</div>
-                            <div class="widget-item"><i class="fas fa-image"></i> DALL-E</div>
-                        </div>
-                        <div class="preview-widget widget-2">
-                            <div class="widget-header">Entertainment</div>
-                            <div class="widget-item"><i class="fab fa-spotify"></i> Spotify</div>
-                            <div class="widget-item"><i class="fab fa-youtube"></i> YouTube</div>
-                            <div class="widget-item"><i class="fas fa-film"></i> Netflix</div>
-                        </div>
-                        <div class="preview-widget widget-3">
-                            <div class="widget-header">Productivity</div>
-                            <div class="widget-item"><i class="fas fa-sticky-note"></i> Notion</div>
-                            <div class="widget-item"><i class="fas fa-tasks"></i> Trello</div>
-                            <div class="widget-item"><i class="fab fa-google-drive"></i> Google Drive</div>
-                        </div>
-                        <div class="preview-widget widget-4">
-                            <div class="widget-header">Education</div>
-                            <div class="widget-item"><i class="fas fa-graduation-cap"></i> Coursera</div>
-                            <div class="widget-item"><i class="fas fa-book"></i> Khan Academy</div>
-                            <div class="widget-item"><i class="fas fa-language"></i> Duolingo</div>
-                        </div>
-                    </div>
+                    <a href="#services" class="btn btn-primary">Our Services</a>
+                    <a href="#contact" class="btn btn-secondary">Get a Quote</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem Section -->
-    <section class="problem-section">
+    <!-- Services Section -->
+    <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">The Problem Dashyweb Solves</h2>
-            <p class="section-subtitle">The internet is vast and overwhelming. You might:</p>
-            <div class="problem-cards">
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>Waste Time Searching</h3>
-                    <p>Spend 15 minutes looking for that specific tool or website you used last week.</p>
+            <div class="section-header">
+                <h2>Our Dual Expertise</h2>
+                <p>Dashyweb operates on two main fronts, offering both general web development and specialized roleplay systems.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>General Web Development</h3>
+                    <p>We build websites for any business, idea, or individual, no matter the industry or purpose.</p>
+                    <ul>
+                        <li>Front-End & Back-End Development</li>
+                        <li>E-commerce Solutions</li>
+                        <li>Blogs & Portfolios</li>
+                        <li>Business Brochure Sites</li>
+                        <li>Custom Web Applications</li>
+                    </ul>
                 </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Forget Useful Resources</h3>
-                    <p>Can't remember the name of that cool AI image generator or helpful study site.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-folder-open"></i>
-                    </div>
-                    <h3>Have Cluttered Bookmarks</h3>
-                    <p>Your favorite sites are scattered across different browsers and devices.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Miss Discovery Opportunities</h3>
-                    <p>Struggle to find new, interesting ways to learn, create, or be entertained.</p>
+                <div class="service-card">
+                    <div class="service-icon">🎭</div>
+                    <h3>Roleplay Systems</h3>
+                    <p>Specialized in creating complex online platforms tailored for roleplaying communities.</p>
+                    <ul>
+                        <li>Complex User Profiles</li>
+                        <li>Post Formatting & IC/OOC Separation</li>
+                        <li>Thread & Forum Management</li>
+                        <li>Character & World Databases</li>
+                        <li>Integrated Chat Systems</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section" id="features">
+    <!-- Comparison Section -->
+    <section class="comparison" id="comparison">
         <div class="container">
-            <h2 class="section-title">Key Features</h2>
-            <p class="section-subtitle">Everything you need in one powerful dashboard</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-th-large"></i>
-                    </div>
-                    <h3>Customizable Dashboard</h3>
-                    <p>Add, remove, and rearrange widgets to create your perfect dashboard layout.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>Smart Search & Filter</h3>
-                    <p>Find exactly what you need with powerful search and filtering by category, tags, and more.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Favorites & Pinning</h3>
-                    <p>Create your own mini-dashboard of most-used sites for one-click access.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync"></i>
-                    </div>
-                    <h3>Cross-Device Sync</h3>
-                    <p>Access your personalized dashboard from any device, anywhere.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3>Curated Content</h3>
-                    <p>Every resource is hand-picked and vetted for quality and relevance.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <h3>Smart Notifications</h3>
-                    <p>Get alerts about new tools, updates, and trending resources in your interests.</p>
-                </div>
+            <div class="section-header">
+                <h2>Service Comparison</h2>
+                <p>Understanding the differences between our general web services and specialized roleplay systems.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="categories-section" id="categories">
-        <div class="container">
-            <h2 class="section-title">Explore by Category</h2>
-            <p class="section-subtitle">Organized hubs for every aspect of your digital life</p>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h3>Fun & Entertainment</h3>
-                    <p>Games, streaming, interactive experiences, and everything for pure enjoyment.</p>
-                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI & Smart Tools</h3>
-                    <p>Cutting-edge AI chatbots, generators, assistants, and productivity boosters.</p>
-                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Design & Creativity</h3>
-                    <p>Tools and inspiration for creators, artists, and visual designers.</p>
-                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Education & Study</h3>
-                    <p>Learning platforms, research tools, and academic resources for all levels.</p>
-                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Productivity & Utilities</h3>
-                    <p>Apps and tools to help you work smarter and manage your digital life.</p>
-                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3>Hidden Gems</h3>
-                    <p>Unique, niche, and surprising websites that don't fit standard categories.</p>
-                    <a href="#" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Language Support Section -->
-    <section class="language-support" id="languages">
-        <div class="container">
-            <h2 class="section-title">Global Accessibility</h2>
-            <p class="section-subtitle">Dashyweb supports multiple languages to serve users worldwide</p>
-            <div class="language-grid">
-                <div class="language-item">
-                    <div class="language-icon">🌐</div>
-                    <h3>English</h3>
-                </div>
-                <div class="language-item">
-                    <div class="language-icon">🇪🇸</div>
-                    <h3>Spanish</h3>
-                </div>
-                <div class="language-item">
-                    <div class="language-icon">🇫🇷</div>
-                    <h3>French</h3>
-                </div>
-                <div class="language-item">
-                    <div class="language-icon">🇩🇪</div>
-                    <h3>German</h3>
-                </div>
-                <div class="language-item">
-                    <div class="language-icon">🇯🇵</div>
-                    <h3>Japanese</h3>
-                </div>
-                <div class="language-item">
-                    <div class="language-icon">🇨🇳</div>
-                    <h3>Chinese</h3>
-                </div>
-                <div class="language-item">
-                    <div class="language-icon">🇷🇺</div>
-                    <h3>Russian</h3>
-                </div>
-                <div class="language-item">
-                    <div class="language-icon">🇵🇹</div>
-                    <h3>Portuguese</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Target Audience Section -->
-    <section class="audience-section">
-        <div class="container">
-            <h2 class="section-title">Who is Dashyweb For?</h2>
-            <div class="audience-cards">
-                <div class="audience-card">
-                    <div class="audience-image">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <h3>Students</h3>
-                    <p>Find study tools, research materials, and creative outlets all in one place.</p>
-                </div>
-                <div class="audience-card">
-                    <div class="audience-image">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Professionals</h3>
-                    <p>Access efficient tools for design, writing, and productivity without the clutter.</p>
-                </div>
-                <div class="audience-card">
-                    <div class="audience-image">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Curious Minds</h3>
-                    <p>Discover amazing websites and resources you never knew existed.</p>
-                </div>
-                <div class="audience-card">
-                    <div class="audience-image">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Parents & Educators</h3>
-                    <p>Find safe, educational, and entertaining resources for children.</p>
-                </div>
-            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>General Website Service</th>
+                        <th>Roleplay System Service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Core Purpose</strong></td>
+                        <td>Online presence, business, information, e-commerce</td>
+                        <td>Collaborative storytelling, community, shared universe</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complexity</strong></td>
+                        <td>Simple to moderately complex</td>
+                        <td>Highly complex, akin to a social network</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Key Features</strong></td>
+                        <td>Contact forms, blogs, product listings, about pages</td>
+                        <td>Character databases, post formatting, lore wikis, permissions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Target Client</strong></td>
+                        <td>Small businesses, artists, entrepreneurs, anyone</td>
+                        <td>Roleplay communities, writers, tabletop RPG players</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta" id="contact">
         <div class="container">
-            <div class="cta-content">
-                <h2>Ready to organize your digital life?</h2>
-                <p>Join thousands of users who have transformed how they discover and use the web.</p>
-                <a href="#" class="btn btn-primary">Get Started Free</a>
-                <p class="cta-note">No credit card required. Setup takes less than 2 minutes.</p>
-            </div>
+            <h2>Ready to Build Your Website?</h2>
+            <p>Whether you need a standard business site or a complex roleplay platform, we have the expertise to bring your vision to life.</p>
+            <a href="#contact" class="btn btn-primary">Get Started Today</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <img src="https://ik.imagekit.io/tycncf0zq0/49bece20-7c7f-4d8f-82b1-a523bb3e21f4.png?updatedAt=1763190928211" alt="Dashyweb Logo">
-                        <span>Dashyweb</span>
-                    </div>
-                    <p>Your personalized internet command center for discovery, productivity, and entertainment.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
+                <div class="footer-column">
+                    <h3>Dashyweb</h3>
+                    <p>Versatile web development company specializing in both general websites and complex roleplay systems.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Product</h3>
-                    <ul>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Updates</a></li>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">E-commerce</a></li>
+                        <li><a href="#">Roleplay Systems</a></li>
+                        <li><a href="#">Custom Applications</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-column">
                     <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Process</a></li>
+                        <li><a href="#">Portfolio</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li>Email: hello@dashyweb.com</li>
+                        <li>Phone: (123) 456-7890</li>
+                        <li>Address: 123 Web Dev Street</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="copyright">
                 <p>&copy; 2023 Dashyweb. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
